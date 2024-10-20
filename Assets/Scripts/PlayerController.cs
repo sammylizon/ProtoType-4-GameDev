@@ -19,9 +19,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxisRaw("Vertical") > 0.1){
-            rb.AddForce(moveSpeed * Time.deltaTime * focalPoint.transform.forward);
-        }
+         float input = Input.GetAxis("Vertical");
+            rb.AddForce(moveSpeed* input * focalPoint.transform.forward);
+        
         
     }
 }
