@@ -6,13 +6,16 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
 
-    public GameObject prefab;
+    public GameObject enemyPrefab;
+    public GameObject powerPrefab;
 
-    public float spawnPos = 9;
+    private float spawnPos = 9;
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating(nameof(CreateEnemy), 2f, 10f);
+        InvokeRepeating(nameof(PowerUpPickUp), 2f, 60f);
+
     }
 
     // Update is called once per frame
@@ -25,7 +28,13 @@ public class SpawnManager : MonoBehaviour
 
         float randomPos = Random.Range(-spawnPos, spawnPos);
 
-        Instantiate(prefab, new Vector3(randomPos,0,randomPos), prefab.transform.rotation);
+        Instantiate(enemyPrefab, new Vector3(randomPos,0,randomPos), enemyPrefab.transform.rotation);
+    }
+
+    public void PowerUpPickUp(){
+
+        float randomPos = Random.Range(-spawnPos, spawnPos);
+        Instantiate(powerPrefab, new Vector3(randomPos,0,randomPos), enemyPrefab.transform.rotation);
 
     }
 }
