@@ -13,15 +13,19 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating(nameof(CreateEnemy), 2f, 10f);
-        InvokeRepeating(nameof(PowerUpPickUp), 2f, 60f);
-
+        InvokeRepeating(nameof(SpawnWave), 2f, 15f);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SpawnWave(){
+        for(int i = 0; i < 3; i++){
+            CreateEnemy();
+        }
     }
 
     public void CreateEnemy(){
