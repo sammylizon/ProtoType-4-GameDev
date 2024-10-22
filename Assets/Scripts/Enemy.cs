@@ -21,5 +21,13 @@ public class Enemy : MonoBehaviour
         //Make the enemy follow the player.
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
         enemyRb.AddForce(lookDirection, ForceMode.Acceleration);
+
+        DestroyOutOfBounds();
+    }
+
+    void DestroyOutOfBounds(){
+        if(transform.position.y < -10){
+            Destroy(gameObject);
+        }
     }
 }
